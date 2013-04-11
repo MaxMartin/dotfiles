@@ -1,4 +1,4 @@
-call pathogen#infect()
+execute pathogen#infect()
 
 set nocompatible
 
@@ -192,3 +192,8 @@ let g:Powerline_symbols = 'fancy'
 
 set foldmethod=indent
 set nofoldenable
+
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces

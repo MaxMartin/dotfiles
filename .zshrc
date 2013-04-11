@@ -53,17 +53,19 @@ alias 'clojure_main'='java -cp /usr/local/Cellar/clojure/1.2.0/clojure.jar cloju
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git github ruby brew osx rvm gem vagrant)
+plugins=(git github ruby brew osx rvm gem vagrant zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH="/Users/max/Documents/Workspace/puppet/bin:/Users/max/Documents/Workspace/facter/bin:/usr/local/bin:/usr/local/sbin:/usr/local/Cellar/python/2.7.1/bin/:$PATH:/opt/local/bin:/Users/max/bin"
-export RUBYLIB="/Users/max/Documents/Workspace/mcollective-test/lib:/Users/max/Documents/Workspace/marionette-collective/lib:/Users/max/Documents/Workspace/puppet/lib:/Users/max/Documents/Workspace/facter/lib:/Users/max/Documents/Workspace/puppet-cloudpack/lib:$RUBYLIB"
+export PATH="/Users/max/workspace/puppet/bin:/Users/max/workspace/facter/bin:/usr/local/bin:/usr/local/sbin:/usr/local/Cellar/python/2.7.1/bin/:$PATH:/opt/local/bin:/Users/max/bin:/usr/local/share/npm/bin:/usr/local/share/python"
+# for when running local source copies of puppet things
+export RUBYLIB="/Users/max/workspace/mcollective-test/lib:/Users/max/workspace/marionette-collective/lib:/Users/max/workspace/puppet/lib:/Users/max/workspace/facter/lib:/Users/max/workspace/puppet-cloudpack/lib:$RUBYLIB"
 
 sleepwatcher -d -w ~/.isightcapture.wakeup
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
+rvm gemset use phoenix
 
 . /Users/max/z/z.sh
 function precmd () {
