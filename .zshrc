@@ -10,7 +10,7 @@ setopt auto_menu
 # Set to the name theme to load.
 # Look in ~/.oh-my-zsh/themes/
 export ZSH_THEME="agnoster"
-autoload colors; colors;
+#autoload colors; colors;
 autoload -U compinit
 compinit -i
 setopt prompt_subst
@@ -35,11 +35,11 @@ parse_git_dirty () {
   fi
 }
 
-if [ -e /usr/share/terminfo/x/xterm-256color ]; then
-        export TERM='xterm-256color'
-else
-        export TERM='xterm-color'
-fi
+#if [ -e /usr/share/terminfo/x/xterm-256color ]; then
+#        export TERM='xterm-256color'
+#else
+#        export TERM='xterm-color'
+#fi
 
 # Load known hosts file for auto-completion with ssh and scp commands
 if [ -f ~/.ssh/known_hosts ]; then

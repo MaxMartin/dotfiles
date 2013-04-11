@@ -121,7 +121,9 @@ set modelines=10
 
 " Default color scheme
 set t_Co=256
-color jellybeans+
+syntax enable
+set background=dark
+colorscheme solarized
 
 " Directories for swp files
 set backupdir=~/.vim/backup
@@ -130,61 +132,10 @@ set directory=~/.vim/backup
 let $JS_CMD='node'
 let g:JSLintHighlightErrorLine = 0
 
-" MacVIM shift+arrow-keys behavior (required in .vimrc)
-let macvim_hig_shift_movement = 1
-
 " Include user's local vim config
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
-
-"puppet test switching - may want to encapsulate this for other projects if I find I need that
-function! GoToTheImplementation()
-    if exists("b:rails_root") && filereadable(b:rails_root . "/script/spec")
-      if match( expand("%:p"), "spec" ) > -1
-        exec(":A")
-      endif
-    else
-      if match( expand("%:p"), "spec/unit" ) > -1
-          let imp_file = substitute(expand("%:p"), "spec/unit", "lib/puppet", "")
-          let imp_file = substitute(imp_file, '\(\w\+\)_spec.rb', '\1.rb', '')
-          exec(":e ". imp_file)
-      endif
-    end
-endfunc
-
-function! GoToTheTest()
-    if exists("b:rails_root") && filereadable(b:rails_root . "/script/spec")
-      if match( expand("%:p"), "spec" ) <= 0
-        exec(":A")
-      endif
-    else
-      if match( expand("%:p"), "lib/puppet" ) > -1
-          let test_file = substitute(expand("%:p"), "lib/puppet", "spec/unit", "")
-          let test_file = substitute(test_file, '\(\w\+\).rb', '\1_spec.rb', '')
-          exec(":e ". test_file)
-      endif
-    end
-endfunc
-map  <leader>gt      :call GoToTheTest()<CR>
-map! <leader>gt <ESC>:call GoToTheTest()<CR>i
-map  <leader>gi      :call GoToTheImplementation()<CR>
-map! <leader>gi <ESC>:call GoToTheImplementation()<CR>i
-
-" showing git diffs
-map  <leader>sd      :w!<CR>:! git diff --color-words HEAD %<CR>
-map! <leader>sd <ESC>:w!<CR>:! git diff --color-words HEAD %<CR>
-
-function! RunSpec(args)
-      let spec = "rspec"
-      let cmd = ":!" . spec . ' ' . expand("%:p") . " -bcfd " . a:args
-    execute cmd
-endfunction
-
-" run one rspec example or describe block based on cursor position
-map <leader>t <ESC>:w<cr>:call GoToTheTest()<CR>:call RunSpec("-l " . <C-r>=line('.')<CR>)<CR>
-" run full rspec file
-map <leader>T <ESC>:w<cr>:call GoToTheTest()<CR>:call RunSpec("")<CR>
 
 set textwidth=80
 set colorcolumn=+1
