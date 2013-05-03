@@ -1,5 +1,14 @@
 execute pathogen#infect()
 
+" Mutt stuff
+autocmd BufRead $HOME/.mutt/temp* set syntax=mail
+autocmd BufRead $HOME/.mutt/temp* set laststatus=2
+autocmd BufRead $HOME/.mutt/temp* set nohlsearch
+autocmd BufRead $HOME/.mutt/temp* set expandtab
+autocmd BufRead $HOME/.mutt/temp* set textwidth=72
+autocmd BufRead $HOME/.mutt/temp* set wrap
+autocmd BufRead $HOME/.mutt/temp* set noautoindent
+
 set nocompatible
 
 set sw=2
@@ -140,6 +149,8 @@ endif
 set textwidth=80
 set colorcolumn=+1
 let g:Powerline_symbols = 'fancy'
+
+set formatprg=par
 
 set foldmethod=indent
 set nofoldenable

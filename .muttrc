@@ -12,7 +12,7 @@ set signature        = ~/.mutt/sig           # my signature file
 set wait_key = no        # shut up, mutt
 set mbox_type = Maildir  # mailbox type
 set timeout = 3          # idle time before scanning
-set mail_check = 0       # minimum time between scans
+set mail_check = 20      # minimum time between scans
 unset move               # gmail does that
 set delete               # don't ask, just do
 unset confirmappend      # don't ask, just do!
@@ -48,8 +48,10 @@ set spoolfile = "+max-puppetlabs.com/INBOX"
 # Mailboxes to show in the sidebar.
 mailboxes +max-puppetlabs.com/INBOX \
           +max-puppetlabs.com/marketing \
-          +max-puppetlabs.com/status reports \
+          +max-puppetlabs.com/status\ reports \
           +max-puppetlabs.com/pe-users \
+          +max-puppetlabs.com/mcollective-users \
+          +max-puppetlabs.com/tickets \
           +max-puppetlabs.com/archive \
           +max-puppetlabs.com/sent \
           +max-puppetlabs.com/drafts \
@@ -150,5 +152,16 @@ bind pager N search-opposite
 # notmuch & mutt-notmuch.py config
 macro index S "<enter-command>unset wait_key<enter><shell-escape>mutt-notmuch-py ~/.mail/temporary/search<enter><change-folder-readonly>+temporary/search<enter>" "search mail (using notmuch)"
 
+# limit all using a
+macro index a "<limit>all\n" "show all messages (undo limit)"
+
+macro pager \Cu "|urlview<enter>" "call urlview to open links"
+
 set query_command="goobook query '%s'"
 macro index,pager a "<pipe-message>goobook add<return>" "add the sender address to Google contacts"
+bind editor <Tab> complete-query
+
+source ~/.mutt/mutt-colors-solarized-dark-16.muttrc
+
+macro index <esc>g "<enter-command>unset wait_key<enter>|load_me_in_gmail.sh\n"
+macro pager <esc>g "<enter-command>unset wait_key<enter>|load_me_in_gmail.sh\n"

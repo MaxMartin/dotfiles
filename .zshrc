@@ -58,7 +58,7 @@ plugins=(git github ruby brew osx rvm gem vagrant zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH="/Users/max/workspace/puppet/bin:/Users/max/workspace/facter/bin:/usr/local/bin:/usr/local/sbin:/usr/local/Cellar/python/2.7.1/bin/:$PATH:/opt/local/bin:/Users/max/bin:/usr/local/share/npm/bin:/usr/local/share/python"
+export PATH="/usr/local/share/npm/bin:/Users/max/workspace/puppet/bin:/Users/max/workspace/facter/bin:/usr/local/bin:/usr/local/sbin:/usr/local/Cellar/python/2.7.1/bin/:$PATH:/opt/local/bin:/Users/max/bin:/usr/local/share/python"
 # for when running local source copies of puppet things
 export RUBYLIB="/Users/max/workspace/mcollective-test/lib:/Users/max/workspace/marionette-collective/lib:/Users/max/workspace/puppet/lib:/Users/max/workspace/facter/lib:/Users/max/workspace/puppet-cloudpack/lib:$RUBYLIB"
 
@@ -74,3 +74,5 @@ function precmd () {
 
 alias rake='noglob rake'
 alias vagrant='nocorrect vagrant'
+
+DISABLE_AUTO_TITLE=true
