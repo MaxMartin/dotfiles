@@ -9,37 +9,11 @@ setopt auto_menu
 
 # Set to the name theme to load.
 # Look in ~/.oh-my-zsh/themes/
-export ZSH_THEME="agnoster"
+export ZSH_THEME="muse"
 #autoload colors; colors;
 autoload -U compinit
 compinit -i
 setopt prompt_subst
-
-# git theming default: Variables for theming the git info prompt
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[yellow]%}‹"
-ZSH_THEME_GIT_PROMPT_SUFFIX="› %{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DIRTY="*"              # Text to display if the branch is dirty
-ZSH_THEME_GIT_PROMPT_CLEAN=""               # Text to display if the branch is clean
-
-# get the name of the branch we are on
-function git_prompt_info() {
-  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-  echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_SUFFIX"
-}
-
-parse_git_dirty () {
-  if [[ -n $(git status -s 2> /dev/null) ]]; then
-    echo "$ZSH_THEME_GIT_PROMPT_DIRTY"
-  else
-    echo "$ZSH_THEME_GIT_PROMPT_CLEAN"
-  fi
-}
-
-#if [ -e /usr/share/terminfo/x/xterm-256color ]; then
-#        export TERM='xterm-256color'
-#else
-#        export TERM='xterm-color'
-#fi
 
 # Load known hosts file for auto-completion with ssh and scp commands
 if [ -f ~/.ssh/known_hosts ]; then
@@ -53,7 +27,7 @@ alias 'clojure_main'='java -cp /usr/local/Cellar/clojure/1.2.0/clojure.jar cloju
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git github ruby brew osx rvm gem vagrant zsh-syntax-highlighting)
+plugins=(ruby brew osx gem vagrant zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -64,9 +38,6 @@ export RUBYLIB="/Users/max/workspace/mcollective-test/lib:/Users/max/workspace/m
 
 sleepwatcher -d -w ~/.isightcapture.wakeup
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
-rvm gemset use phoenix
-
 . /Users/max/z/z.sh
 function precmd () {
   _z --add "$(pwd -P)"
@@ -76,3 +47,5 @@ alias rake='noglob rake'
 alias vagrant='nocorrect vagrant'
 
 DISABLE_AUTO_TITLE=true
+
+. resty
