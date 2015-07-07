@@ -121,6 +121,25 @@
    t)
   (package-initialize)
   (require 'rcirc-notify)
+  (setq rcirc-server-alist
+        '(("chat.banksimple.com"
+           :nick "m4x"
+           :port 9999
+           :user-name "max"
+           :encryption tls
+           :password "max:MQQwT9Y8Zief")
+          ("74.207.243.87"
+           :nick "maxmartin"
+           :port 6007
+           :user-name "maxmartin/lambda"
+           :encryption tls
+           :password "ircpass")
+          ("74.207.243.87"
+           :nick "maxmartin"
+           :port 6007
+           :user-name "maxmartin/freenode"
+           :encryption tls
+           :password "ircpass")))
 )
 
 ;; Custom variables
@@ -192,9 +211,6 @@
     ("dataeng" "support!" "free!" "timbers" "banjo" "netrunner" "wackadoo" "cowbell!" "coinscope" "gardener")))
  '(rcirc-notify-timeout 120)
  '(rcirc-prompt "%t> ")
- '(rcirc-server-alist
-   (quote
-    (("chat.banksimple.com" :nick "m4x" :port 9999 :user-name "max" :encryption tls :password "max:MQQwT9Y8Zief"))))
  '(ring-bell-function (quote ignore) t)
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#eee8d5" 0.2))
  '(term-default-bg-color "#fdf6e3")
